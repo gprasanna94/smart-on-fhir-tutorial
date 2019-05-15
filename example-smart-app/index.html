@@ -102,22 +102,17 @@
     </script>
     
     
-    <button onclick="myFunction()">Click me</button>
-    
-    <script>
-    myFunction(){
-     <h1>PokeMon Search API</h1>
+    <button id="myBtn">Try it</button>
 
-      //javascript function here?
+<p id="demo"></p>
 
-           <input id="text" type="text" value="" style="Width:20%"/> 
-           <button>Find PokeMon By Name</button>
+<script>
+document.getElementById("myBtn").addEventListener("click", displayDate);
 
-          <p>Results</p>   
-          <div v-html="link.FUNCTIONVARIABLE"></div>
-      
-   }
-    </script>
+function displayDate() {
+  document.getElementById("demo").innerHTML = Date();
+}
+</script>
     
     
   </body>
