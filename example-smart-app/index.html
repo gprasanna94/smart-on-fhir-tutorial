@@ -102,21 +102,24 @@
     </script>
     
     
-    <button id="myBtn">click here</button><p>to consume the web service...</p>
-
-     <p id="demo"></p>
+    <button id="myBtn">click here</button><p>to consume the web service...</p><br/><br/>  
+	  
+     	 <p id="demo"></p>
+	 <p id="demo1"></p>
 
       <script>
       document.getElementById("myBtn").addEventListener("click", loadDoc);
       
 	  
 	  function loadDoc() {
-	  console.log('load');
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("demo").innerHTML = 'Title: ' + JSON.parse(this.responseText).title + ' UserId: ' + JSON.parse(this.responseText).userId;
-    }
+	  	console.log('load');
+  	  	var xhttp = new XMLHttpRequest();
+ 		 xhttp.onreadystatechange = function() {
+    		if(this.readyState == 4 && this.status == 200) {
+     		var obj = JSON.parse(this.responseText);
+		document.getElementById("demo").innerHTML = ' UserId: ' + obj.id; 
+		document.getElementById("demo1").innerHTML= 'Title: ' + obj.title;
+    	}
   };
   xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
   xhttp.send();
