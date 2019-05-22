@@ -91,9 +91,9 @@
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
           drawVisualization(p);
-		alert(console.log(p));
-		console.log(p.fname);
-		console.log(p);
+		alert(JSON.stringify(p));
+		console.log(JSON.stringify(p));
+		
         },
 
         //Display 'Failed to call FHIR Service' if extractData failed
