@@ -110,6 +110,7 @@
 	  
      	 <p id="demo"></p>
 	 <p id="demo1"></p>
+	 <p id="demo2"></p>
 
       <script>
       document.getElementById("myBtn").addEventListener("click", loadDoc);
@@ -121,6 +122,9 @@
  		 xhttp.onreadystatechange = function() {
     		if(this.readyState == 4 && this.status == 200) {
      		var obj = JSON.parse(this.responseText);
+		document.getElementById("demo").innerHTML = ' Name: ' + obj.id;
+		document.getElementById("demo1").innerHTML = ' Gender: ' + obj.gender;
+		document.getElementById("demo2").innerHTML = ' D.O.B: ' + obj.birthDate;
 			
 		
 		
