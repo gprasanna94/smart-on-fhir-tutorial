@@ -106,16 +106,13 @@
     
     
 	  
-    <button id="myBtn">click here</button><p>to consume the web service...</p> 
+    <button onClick="loadDoc()">click here</button><p>to consume the web service...</p> 
 	  
      	 <p id="demo"></p>
 	 <p id="demo1"></p>
 	 <p id="demo2"></p>
 
-      <script>
-      document.getElementById("myBtn").addEventListener("click", loadDoc);
-      
-	  
+      <script> 
 	  function loadDoc() {
 	  	
   	  	var xhttp = new XMLHttpRequest();
