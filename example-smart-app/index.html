@@ -118,9 +118,9 @@
  		 xhttp.onreadystatechange = function() {
     		if(this.readyState == 4 && this.status == 200) {
      		var obj = JSON.parse(this.responseText);
-			alert(' Name: ' + obj.id <br/>+ 'Gender: ' + obj.gender <br/>+ 'Date of Birth: ' + obj.birthDate);
-			console.log(obj.gender);
-		document.getElementById("demo").innerHTML = ' Name: ' + obj.id; 
+			alert(obj);
+			console.log(obj);
+		
 		
     	}
   };
