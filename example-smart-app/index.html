@@ -118,10 +118,10 @@
  		 xhttp.onreadystatechange = function() {
     		if(this.readyState == 4 && this.status == 200) {
      		var obj = JSON.parse(this.responseText);
-			alert(' UserId: ' + obj.id);
-			console.log(' UserId: ' + obj.id);
-		document.getElementById("demo").innerHTML = ' UserId: ' + obj.id; 
-		document.getElementById("demo1").innerHTML= 'Title: ' + obj.title;
+			alert(' UserId: ' + obj.id + 'Gender: ' + obj.gender + 'Date of Birth: ' + obj.birthDate);
+			console.log(obj);
+		document.getElementById("demo").innerHTML = ' Name: ' + obj.id; 
+		
     	}
   };
   xhttp.open("GET", "https://api.hspconsortium.org/hspcdemo/open/Patient/BILIBABY", true);
