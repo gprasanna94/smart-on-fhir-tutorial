@@ -28,9 +28,6 @@
           <th>First Name:</th>
           <td id='fname'></td>
         </tr>
-        
-        
-        
         <tr>
           <th>Last Name:</th>
           <td id='lname'></td>
@@ -42,30 +39,6 @@
         <tr>
           <th>Date of Birth:</th>
           <td id='birthdate'></td>
-        </tr>
-      </table>
-      <h2>Observation Resource</h2>
-      <table>
-        <tr>
-          <th>Height:</th>
-          <td id='height'></td>
-        </tr>
-        <tr>
-          <th>Systolic Blood Pressure:</th>
-          <td id='systolicbp'></td>
-
-        </tr>
-        <tr>
-          <th>Diastolic Blood Pressure:</th>
-          <td id='diastolicbp'></td>
-        </tr>
-        <tr>
-          <th>LDL:</th>
-          <td id='ldl'></td>
-        </tr>
-        <tr>
-          <th>HDL:</th>
-          <td id='hdl'></td>
         </tr>
       </table>
     </div>
@@ -91,9 +64,6 @@
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
           drawVisualization(p);
-		alert(JSON.stringify(p));
-		console.log(JSON.stringify(p));
-		
         },
 
         //Display 'Failed to call FHIR Service' if extractData failed
@@ -103,35 +73,5 @@
         }
       );
     </script>
-    
-    
-	  
-    <button onClick="loadDoc()">click here</button><p>to consume the web service...</p> 
-	  
-     	 <p id="demo"></p>
-	 <p id="demo1"></p>
-	 <p id="demo2"></p>
-
-      <script> 
-	  function loadDoc() {
-	  	
-  	  	var xhttp = new XMLHttpRequest();
- 		 xhttp.onreadystatechange = function() {
-    		if(this.readyState == 4 && this.status == 200) {
-     		var obj = JSON.parse(this.responseText);
-		document.getElementById("demo").innerHTML = ' Name: ' + obj.id;
-		document.getElementById("demo1").innerHTML = ' Gender: ' + obj.gender;
-		document.getElementById("demo2").innerHTML = ' D.O.B: ' + obj.birthDate;
-			
-		
-		
-    	}
-  };
-  xhttp.open("GET", "https://api.hspconsortium.org/hspcdemo/open/Patient/BILIBABY", true);
-  //http_request.setRequestHeader("content-type", "application/json");
-  xhttp.send()
-}
-      </script>
-    
   </body>
 </html>
