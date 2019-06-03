@@ -41,6 +41,7 @@
           <td id='birthdate'></td>
         </tr>
       </table>
+
     </div>
     <!-- Required JS files to enable this page to embed within an MPage -->
     <!--
@@ -62,8 +63,8 @@
     <script>
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
-        function(patientdetails) {
-          showPatientData(patientdetails);
+        function(p) {
+          drawVisualization(p);
         },
 
         //Display 'Failed to call FHIR Service' if extractData failed
