@@ -1,39 +1,39 @@
 (function(window){
   window.extractData = function() {
-    let response = $.Deferred();
+    var ret = $.Deferred();
 
     function onError() {
       console.log('Loading error', arguments);
-      response.reject();
+      ret.reject();
     }
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
-        let patient = smart.patient;
-        let patientData = patient.read();
+        var patient = smart.patient;
+        var pt = patient.read();
 
+        $.when(pt).fail(onError);
 
-        $.when(patientData).fail(onError);
+        $.when(pt).done(function(patient) {
 
-        $.when(patientData).done(function(patient) {
-          let gender = patient.gender;
+          var gender = patient.gender;
 
-          let fname = '';
-          let lname = '';
+          var fname = '';
+          var lname = '';
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
           }
 
-          let patientdetails = defaultPatient();
-          patientdetails.birthdate = patient.birthDate;
-          patientdetails.gender = gender;
-          patientdetails.fname = fname;
-          patientdetails.lname = lname;
+          var p = defaultPatient();
+          p.birthdate = patient.birthDate;
+          p.gender = gender;
+          p.fname = fname;
+          p.lname = lname;
+          p.height = getQuantityValueAndUnit(height[0]);
 
-
-          response.resolve(p);
+          ret.resolve(p);
         });
       } else {
         onError();
@@ -41,7 +41,7 @@
     }
 
     FHIR.oauth2.ready(onReady, onError);
-    return response.promise();
+    return ret.promise();
 
   };
 
@@ -50,20 +50,20 @@
       fname: {value: ''},
       lname: {value: ''},
       gender: {value: ''},
-      birthdate: {value: ''},
+      birthdate: {value: ''}
     };
   }
 
 
 
 
-  window.showPatientData = function(patientdetails) {
+  window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
-    $('#fname').html(patientdetails.fname);
-    $('#lname').html(patientdetails.lname);
-    $('#gender').html(patientdetails.gender);
-    $('#birthdate').html(patientdetails.birthdate);
+    $('#fname').html(p.fname);
+    $('#lname').html(p.lname);
+    $('#gender').html(p.gender);
+    $('#birthdate').html(p.birthdate);
   };
 
 })(window);
